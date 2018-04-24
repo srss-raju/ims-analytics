@@ -186,6 +186,6 @@ def customer_volume():
 
 	#SAVING THE FORECASTED DATA TO THE CSV FILE IN THE DETSINATION PATH MENTIONED
 	forecast_df['Month'] = forecast_df['Month'].dt.strftime('%Y-%m-%d')
-	cust_forecast = df.to_json(orient='records', date_format = 'iso')[1:-1].replace('},{', '} {')
+	cust_forecast = forecast_df.to_json(orient='records', date_format = 'iso')[1:-1].replace('},{', '} {')
 	return cust_forecast
 	
