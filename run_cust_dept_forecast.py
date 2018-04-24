@@ -64,7 +64,7 @@ def customer_dept_volume():
 		file_ext = filetype[-1]
 
 	#Getting the original column names and the renamed column names as per application from semantic mapping layer
-	orig_cols, rename_columns = semantic_columns(APP_TYPE)
+	orig_cols, rename_columns = semantic_columns('AMPM')
 
 	#Reading the incident file provided 
 	try:

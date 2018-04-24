@@ -47,7 +47,7 @@ fp   = forecast_file_preprocessing()
 app = Flask(__name__)
 socketio = SocketIO(app)
 
-@app.route('/forecast', methods=['GET'])
+@app.route('/cust_forecast', methods=['GET'])
 def customer_volume():
 	
 	#Generating the log file
