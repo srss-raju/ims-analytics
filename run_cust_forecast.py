@@ -179,3 +179,4 @@ def customer_volume(APP_TYPE):
 	forecast_df['Month'] = forecast_df['Month'].dt.strftime('%Y-%m-%d')
 	cust_forecast = df.to_json(orient='records', date_format = 'iso')[1:-1].replace('},{', '} {')
 	return cust_forecast
+	
