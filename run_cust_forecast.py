@@ -27,6 +27,12 @@ from datetime import date
 import calendar
 from dateutil.relativedelta import relativedelta
 
+from flask import Flask, request
+from flask_socketio import SocketIO, send, emit
+import json
+import requests
+import random
+
 #Importing the arima class object
 from models_volume_forecast import forecast_file_preprocessing
 from models_volume_forecast import arima_model 
@@ -38,8 +44,11 @@ from semantic_mapping_app import semantic_columns
 arima = arima_model()
 fp   = forecast_file_preprocessing()
 
+app = Flask(__name__)
+socketio = SocketIO(app)
 
-def customer_volume(APP_TYPE):
+@app.route('/forecat', methods=['GET'])
+def customer_volume():
 	
 	#Generating the log file
 	logger = logging.getLogger(__name__)
@@ -59,7 +68,7 @@ def customer_volume(APP_TYPE):
 		file_ext = filetype[-1]
 
 	#Getting the original column names and the renamed column names as per application from semantic mapping layer
-	orig_cols, rename_columns = semantic_columns(APP_TYPE)
+	orig_cols, rename_columns = semantic_columns('AMPM')
 
 	#Reading the incident file provided 
 	try:
