@@ -28,7 +28,7 @@ import calendar
 from dateutil.relativedelta import relativedelta
 
 from flask import Flask, request
-from flask_socketio import SocketIO, send, emit
+from flask_socketio import send, emit
 import json
 import requests
 import random
@@ -45,10 +45,13 @@ arima = arima_model()
 fp   = forecast_file_preprocessing()
 
 app = Flask(__name__)
-socketio = SocketIO(app)
+#socketio = SocketIO(app)
+
+
 
 @app.route('/cust_forecast', methods=['GET'])
 def customer_volume():
+	
 	
 	#Generating the log file
 	logger = logging.getLogger(__name__)
